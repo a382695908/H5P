@@ -1,0 +1,35 @@
+.clearfix{
+	*zoom: 1;
+}
+.clearfix:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+.pr{
+	position: relative;
+}
+.pa{
+	position: absolute;
+}
+.pf{
+	position: fixed;
+}
+.fr{
+	float: right;
+}
+.fl{
+	float: left;
+}
+.hide{
+	display: none;
+}
+.hidefont{
+	font-size: 0;
+	-webkit-text-size-adjust: none;
+	text-indent: -9999em;
+}
+.no-select{
+	-webkit-user-select: none;
+	overflow: hidden;
+}

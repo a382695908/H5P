@@ -1,7 +1,7 @@
 bulid
 node_modules
 .naeindex
-css
+index.min.css
 main.min.js
 process.min.js
 background.js
