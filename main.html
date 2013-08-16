@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>H5P - ZP</title>
+    <link rel="stylesheet" type="text/css" href="css/index.min.css">
+</head>
+<body class="no-select bg">
+	<!-- 顶部 -->
+ 	<div id="top" class="top">
+        <!-- 处理图片缩略图 -->
+        <div class="top-img">
+            <canvas width="85" height="84" class="current-image" id="currentImage"></canvas>
+            <div id="topText">暂无处理图片</div>
+        </div>
+        <!-- 打开图片方式按钮 -->
+        <div id="tool" class="tool">
+            <span cmd="file" class="file" title="打开图片">打开</span>
+            <span cmd="medio" class="medio" title="视频拍照">拍照</span>
+        </div>
+ 	</div>
+
+    <!-- 中间 -->
+ 	<div id="content" class="content">
+        <!-- 功能TAB -->
+        <div id="tab" class="tab">
+            <span class="current" cmd="#list1" title="美化图片">
+                <img src="images/sendpic.png">
+            </span><span cmd="#list2" title="保存分享">
+                 <img src="images/sendfile.png">
+        </span>
+        </div>
+        <!-- 功能区域 -->
+        <div id="list" class="list">
+            <!-- 美化图片 -->
+            <div id="list1" class="list1">
+
+                <div class="title"><i class="icon"></i>基础编辑</div>
+                <div class="list1-content">
+
+                    <div id="jichutiaozhengT" class="list1-content-t"><i class="icon"></i>基础调整</div>
+                    <div class="list1-content-c">
+                        <div class="item">
+                            <div>亮度  <span id="liangduVal">0</span></div>
+                            <div><input id="liangdu" type="range" min="-100" max="100" value="0"></div>
+                        </div>
+                        <div class="item">
+                           <div>对比度  <span id="duibiduVal">0</span></div>
+                           <div><input id="duibidu" type="range" min="-100" max="100" value="0"></div>
+                        </div>
+                        <div id="jichutiaozheng" class="btn hide">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+                    <div id="secaitiaozhengT" class="list1-content-t"><i class="icon"></i>色彩调整</div>
+                    <div class="list1-content-c">
+                        <div class="item">
+                            <div>青 - 红</div>
+                            <div><input id="qinghong" type="range" min="-100" max="100" value="0"></div>
+                        </div>
+                        <div class="item">
+                            <div>紫 - 绿</div>
+                            <div><input id="zilv" type="range" min="-100" max="100" value="0"></div>
+                        </div>
+                        <div class="item">
+                            <div>黄 - 蓝</div>
+                            <div><input id="huanglan" type="range" min="-100" max="100" value="0"></div>
+                        </div>
+                        <div id="secaitiaozheng" class="btn hide">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+                    <div id="xuanzhuangT" class="list1-content-t"><i class="icon"></i>旋转</div>
+                    <div class="list1-content-c">
+                        <div id="rotateBtn" class="btn">
+                            <span cmd="l">向左</span><span cmd="r">向右</span><span cmd="h">水平</span><span cmd="v">垂直</span>
+                        </div>
+                        <div class="item">
+                            <div>任意旋转 <span id="rotateTxt">0</span>°</div>
+                            <div><input id="rotate" type="range" min="-45" max="45" value="0"></div>
+                        </div>
+                        <div id="xuanzhuang" class="btn hide">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+                    <div id="caijianT" class="list1-content-t" cmd="part"><i class="icon"></i>裁剪</div>
+                    <div class="list1-content-c">
+                        <!-- <div class="select">
+                            <select>
+                                <option>自由裁剪</option>  
+                            </select>
+                        </div> -->
+                        <div class="item1">
+                            <div>
+                                宽度 <input disabled id="caijianwidth" type="texbox" style="width:60px;" />
+                            </div>
+                            <div>
+                                高度 <input disabled id="caijianheight" type="texbox" style="width:60px;" />
+                            </div>
+                        </div>
+                      <!--   <div class="item">
+                            <input type="checkbox" id="checkboxcut">
+                            <label for="checkboxcut">锁定裁剪比例</label>
+                        </div> -->
+                        <div id="caijian" class="btn">
+                            <span cmd="clipOk">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+                    <div id="xiugaichicunT" class="list1-content-t" cmd="part"><i class="icon"></i>修改尺寸</div>
+                    <div class="list1-content-c">
+                        <div class="item1">
+                            <div>
+                                宽度 <input id="xiugaichicunwidth" cmd="width" type="texbox" style="width:60px;" />
+                            </div>
+                            <div>
+                                高度 <input id="xiugaichicunheight" cmd="height" type="texbox" style="width:60px;" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <input type="checkbox" id="checkboxcut1">
+                            <label for="checkboxcut1">锁定宽高比例</label>
+                        </div>
+                        <div id="xiugaichicun" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="title"><i class="icon"></i>特效</div>
+                <div class="list1-content">
+                    
+                    <div id="texiao1T" class="list1-content-t"><i class="icon"></i>特效</div>
+                    <div class="list1-content-c texiaoTContent">
+                        <div class="spec">
+                            <span confing="bluebell">bluebell</span><span confing="lomo">
+                            lomo</span><span confing="lordkelvin">
+                            lordkelvin</span><span confing="nashville">
+                            nashville</span><span confing="xpro">
+                            x-pro</span><span confing="dbql">
+                            对比强烈</span><span confing="fnx">
+                            粉嫩系</span><span confing="fghb">
+                            复古黑白</span><span confing="gtf">
+                            哥特风</span><span confing="gsjb">
+                            光束渐变</span><span confing="hqqcjh">
+                            后期青春简化</span><span confing="hy">
+                            回忆</span>
+                        </div>
+                        <div class="oitem item hide">
+                            <div>透明度</div>
+                            <div><input id="opacity1" type="range" min="0" max="100" value="100"></div>
+                        </div>
+                        <div id="texiao1" class="btn hide">
+                            <span cmd="opacityOk">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+                    <div id="texiao2T" class="list1-content-t"><i class="icon"></i>特效</div>
+                    <div class="list1-content-c texiaoTContent">
+                        <div class="spec">
+                            <span confing="ld">蓝调</span><span confing="lzp">
+                            老照片</span><span confing="lh">
+                            亮红</span><span confing="pay">
+                            平安夜</span><span confing="qpjb">
+                            气泡渐变</span><span confing="rg">
+                            日光</span><span confing="slly">
+                            深蓝泪雨</span><span confing="xyjb">
+                            夕阳渐变</span><span confing="xxgy">
+                            心形光晕</span><span confing="xc">
+                            絢彩</span><span confing="xhfw">
+                            雪花飞舞</span><span confing="zshx">
+                            紫色幻想</span>
+                        </div>
+                        <div class="oitem item hide">
+                            <div>透明度</div>
+                            <div><input id="opacity2" type="range" min="0" max="100" value="100"></div>
+                        </div>
+                        <div id="texiao2" class="btn hide">
+                            <span cmd="opacityOk">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+                </div>
+
+
+               <!--  <div class="title"><i class="icon"></i>饰品</div>
+                <div class="list1-content">
+                    
+                </div> -->
+
+
+                <div class="title"><i class="icon"></i>边框</div>
+                <div class="list1-content">
+                    
+                    <div id="xuancaibkT" class="list1-content-t"><i class="icon"></i>炫彩边框</div>
+                    <div class="list1-content-c">
+                        <div class="item hide xuancaibkitem">
+                            <div>透明度</div>
+                            <div><input id="xuancaiopacity" type="range" min="0" max="100" value="100"></div>
+                        </div>
+                        <div id="xuancaibk" class="btn hide xuancaibkitem">
+                            <span cmd="opacityOk">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                        <div id="xuancaibkContent" class="spec">
+                            <span><img src="assets/border/xuancai/1.jpg"></span><span>
+                            <img src="assets/border/xuancai/2.jpg"></span><span>
+                            <img src="assets/border/xuancai/3.jpg"></span><span>
+                            <img src="assets/border/xuancai/4.jpg"></span><span>
+                            <img src="assets/border/xuancai/5.jpg"></span><span>
+                            <img src="assets/border/xuancai/6.jpg"></span><span>
+                            <img src="assets/border/xuancai/7.jpg"></span><span>
+                            <img src="assets/border/xuancai/8.jpg"></span><span>
+                            <img src="assets/border/xuancai/9.jpg"></span><span>
+                            <img src="assets/border/xuancai/10.jpg"></span><span>
+                            <img src="assets/border/xuancai/11.jpg"></span><span>
+                            <img src="assets/border/xuancai/12.jpg"></span><span>
+                            <img src="assets/border/xuancai/13.jpg"></span><span>
+                            <img src="assets/border/xuancai/14.jpg"></span><span>
+                            <img src="assets/border/xuancai/15.jpg"></span><span>
+                            <img src="assets/border/xuancai/16.jpg"></span>
+                        </div>
+                    </div>
+
+
+                    <div id="jiandanbkT" class="list1-content-t"><i class="icon"></i>简单边框</div>
+                    <div class="list1-content-c">
+                        <div id="jiandanbk" class="btn hide">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                        <div id="jiandanbkContent" class="spec">
+                            <span cmd="1" config="more">
+                                <img src="assets/border/jiandan/thumb/1.png">
+                            </span><span cmd="2" config="more">
+                                <img src="assets/border/jiandan/thumb/2.jpg">
+                            </span><span cmd="4" config="more">
+                                <img src="assets/border/jiandan/thumb/4.png">
+                            </span><span cmd="5" config="more">
+                                <img src="assets/border/jiandan/thumb/5.png">
+                            </span><span cmd="6">
+                                <img src="assets/border/jiandan/6.png">
+                            </span><span cmd="7">
+                                <img src="assets/border/jiandan/7.png">
+                            </span><span cmd="8">
+                                <img src="assets/border/jiandan/8.png">
+                            </span><span cmd="9">
+                                <img src="assets/border/jiandan/9.png">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="wenlibkT" class="list1-content-t"><i class="icon"></i>纹理边框</div>
+                    <div class="list1-content-c">
+                        <div id="wenlibkColor" class="item3">
+                            <span class="color" value="9C9961"></span><span class="color" value="8201CC"></span><span class="color" value="7B2834"></span><span class="color" value="3B7C9E"></span><span class="color" value="8F4F29"></span><span class="color" value="EDB725"></span><span class="color" value="D5529D"></span>
+                        </div>
+                        <div id="wenlibk" class="btn hide">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                        <div id="wenlibkContent" class="spec">
+                            <span cmd="1">
+                                <img src="assets/border/wenli/1.png">
+                            </span><span cmd="2">
+                                <img src="assets/border/wenli/2.png">
+                            </span><span cmd="3">
+                                <img src="assets/border/wenli/3.png">
+                            </span><span cmd="4">
+                                <img src="assets/border/wenli/4.png">
+                            </span><span cmd="5">
+                                <img src="assets/border/wenli/5.png">
+                            </span><span cmd="6">
+                                <img src="assets/border/wenli/6.png">
+                            </span><span cmd="7">
+                                <img src="assets/border/wenli/7.png">
+                            </span><span cmd="8">
+                                <img src="assets/border/wenli/8.png">
+                            </span><span cmd="9">
+                                <img src="assets/border/wenli/9.png">
+                            </span><span cmd="10">
+                                <img src="assets/border/wenli/10.png">
+                            </span><span cmd="11">
+                                <img src="assets/border/wenli/11.png">
+                            </span><span cmd="12">
+                                <img src="assets/border/wenli/12.png">
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- <div class="title"><i class="icon"></i>场景</div>
+                <div class="list1-content">
+                    
+                </div> -->
+
+
+                <div class="title"><i class="icon"></i>涂鸦</div>
+                <div class="list1-content">
+
+                    <div id="qianbiT" class="list1-content-t" cmd="part"><i class="icon"></i>铅笔</div>
+                    <div id="qianbiContentDiv" class="list1-content-c">
+                        <div id="qianbiTypeDiv" class="item2">
+                             <label class="label">
+                                <input id="qianbiType" type="radio" value="0" name="qianbi" checked /> 画笔
+                            </label><label class="label">
+                                <input type="radio" value="1" name="qianbi" /> 橡皮檫
+                            </label>
+                        </div>
+                        <div class="item hide qianbiitem2">
+                            <div>橡皮擦大小  <span id="qianbiEraseSizeVal">50</span></div>
+                            <div><input id="qianbiEraseSize" type="range" min="5" max="100" value="50"></div>
+                        </div>
+                        <div class="btn hide qianbiitem2">
+                            <span id="qianbiClear" cmd="clear" class="hide">清除所有</span>
+                        </div>
+                        <div id="qianbiOtherColorContent" class="item1 pr qianbiitem1">
+                            
+                            <span id="qianbiCurrentColor" class="current-color color" value="000000"></span>
+                            <span id="qianbiBtnChooseColor" class="btn-choose-color">选择其他颜色</span>
+                            <div id="qianbiColorWrap" class="color-wrap top-57">
+                                <div class="color-title">
+                                    <span class="current"></span>
+                                    <input class="current-text" type="text" />
+                                </div>
+                                <div id="qianbiColorContent" class="content">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="qianbi" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+                    <div id="beijingT" class="list1-content-t" cmd="part"><i class="icon"></i>背景</div>
+                    <div class="list1-content-c">
+                        <div id="beijingTypeDiv" class="item2">
+                            <label>
+                                <input id="beijingType" type="radio" value="0" name="beijing" checked /> 画笔
+                            </label> &nbsp;
+                            <label>
+                                <input type="radio" value="1" name="beijing" /> 橡皮檫
+                            </label>
+                        </div>
+                        <div class="item">
+                            <div>画笔大小  <span id="beijingSizeVal">50</span></div>
+                            <div><input id="beijingSize" type="range" min="5" max="100" value="50"></div>
+                        </div>
+                        <div id="beijing" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                        <div id="beijingContent" class="spec">
+                            <span cmd="1">
+                                <img src="assets/background/1.png">
+                            </span><span cmd="2">
+                                <img src="assets/background/2.png">
+                            </span><span cmd="3">
+                                <img src="assets/background/3.png">
+                            </span><span cmd="4">
+                                <img src="assets/background/4.png">
+                            </span><span cmd="5">
+                                <img src="assets/background/5.png">
+                            </span><span cmd="6">
+                                <img src="assets/background/6.png">
+                            </span><span cmd="7">
+                                <img src="assets/background/7.png">
+                            </span><span cmd="8">
+                                <img src="assets/background/8.png">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="yinzhangT" class="list1-content-t" cmd="part"><i class="icon"></i>印章</div>
+                    <div id="yinzhangContentDiv" class="list1-content-c">
+                        <div id="yinzhangTypeDiv" class="item2">
+                             <label class="label">
+                                <input id="yinzhangType" type="radio" value="0" name="yinzhang" checked /> 画笔
+                            </label><label class="label">
+                                <input type="radio" value="1" name="yinzhang" /> 橡皮檫
+                            </label>
+                        </div>
+                        <div class="item yinzhangitem1">
+                            <div>画笔大小  <span id="yinzhangSizeVal">100</span></div>
+                            <div><input id="yinzhangSize" type="range" min="5" max="100" value="100"></div>
+                        </div>
+                        <div class="item yinzhangitem1">
+                            <div>透明度  <span id="yinzhangTranVal">100</span>%</div>
+                            <div><input id="yinzhangTran" type="range" min="5" max="100" value="100"></div>
+                        </div>
+                        <div class="item hide yinzhangitem2">
+                            <div>橡皮擦大小  <span id="yinzhangEraseSizeVal">50</span></div>
+                            <div><input id="yinzhangEraseSize" type="range" min="5" max="100" value="50"></div>
+                        </div>
+                        <div class="btn hide yinzhangitem2">
+                            <span id="yinzhangClear" cmd="clear" class="hide">清除所有</span>
+                        </div>
+                        <div id="yinzhangColor" class="item2 yinzhangitem1">
+                            <label class="label">
+                                    <input type="checkbox" cmd="random" /> 随机
+                            </label><label class="label">
+                                    <input type="checkbox" /> 取色
+                            </label>
+                        </div>
+                        <div id="yinzhangOtherColorContent" class="item1 pr yinzhangitem1">
+                            
+                            <span id="yinzhangCurrentColor" class="current-color color" value="000000"></span>
+                            <span id="yinzhangBtnChooseColor" class="btn-choose-color">选择其他颜色</span>
+                            <div id="yinzhangColorWrap" class="color-wrap top-144">
+                                <div class="color-title">
+                                    <span class="current"></span>
+                                    <input class="current-text" type="text" />
+                                </div>
+                                <div id="yinzhangColorContent" class="content">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="yinzhang" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                        <div id="yinzhangContent" class="spec yinzhangitem1">
+                            <!-- 印章内容有js生成 -->
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="title" cmd="part"><i class="icon"></i>局部处理</div>
+                <div class="list1-content">
+                    
+                    <div id="beijingxuhuaT" class="list1-content-t" cmd="part"><i class="icon"></i>背景虚化</div>
+                    <div class="list1-content-c">
+                        <div id="beijingxuhuaTypeDiv" class="item2">
+                             <label>
+                                <input id="beijingxuhuaType" type="radio" value="0" name="beijingxuhua" checked /> 画笔
+                            </label> &nbsp;
+                            <label>
+                                <input type="radio" value="1" name="beijingxuhua" /> 橡皮檫
+                            </label>
+                        </div>
+                        <div class="item">
+                            <div>画笔大小  <span id="beijingxuhuaSizeVal">50</span></div>
+                            <div><input id="beijingxuhuaSize" type="range" min="5" max="100" value="50"></div>
+                        </div>
+                        <div class="item">
+                           <div>虚化力度</div>
+                           <div><input id="beijingxuhuaLevel" type="range" min="1" max="10" value="3"></div>
+                        </div>
+                        <div id="beijingxuhua" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+
+
+                    <div id="masaikeT" class="list1-content-t" cmd="part"><i class="icon"></i>局部马赛克</div>
+                    <div class="list1-content-c">
+                        <div id="masaikeTypeDiv" class="item2">
+                             <label>
+                                <input id="masaikeType" type="radio" value="0" name="masaike" checked /> 画笔
+                            </label> &nbsp;
+                            <label>
+                                <input type="radio" value="1" name="masaike" /> 橡皮檫
+                            </label>
+                        </div>
+                        <div class="item">
+                            <div>画笔大小  <span id="masaikeSizeVal">50</span></div>
+                            <div><input id="masaikeSize" type="range" min="5" max="100" value="50"></div>
+                        </div>
+                        <div class="item">
+                           <div>画笔力度</div>
+                           <div><input id="masaikeLevel" type="range" min="1" max="10" value="3"></div>
+                        </div>
+                        <div id="masaike" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+
+
+                    <div id="caisebiT" class="list1-content-t" cmd="part"><i class="icon"></i>局部彩色笔</div>
+                    <div class="list1-content-c">
+                        <div id="caisebiTypeDiv" class="item2">
+                             <label>
+                                <input id="caisebiType" type="radio" value="0" name="caisebi" checked /> 画笔
+                            </label> &nbsp;
+                            <label>
+                                <input type="radio" value="1" name="caisebi" /> 橡皮檫
+                            </label>
+                        </div>
+                        <div class="item">
+                            <div>画笔大小  <span id="caisebiSizeVal">50</span></div>
+                            <div><input id="caisebiSize" type="range" min="5" max="100" value="50"></div>
+                        </div>
+                        <div id="caisebi" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                    </div>
+
+
+
+                    <div id="biansebiT" class="list1-content-t" cmd="part"><i class="icon"></i>局部变色笔</div>
+                    <div id="biansebiContent" class="list1-content-c">
+                        <div id="biansebiTypeDiv" class="item2">
+                             <label>
+                                <input id="biansebiType" type="radio" value="0" name="biansebi" checked /> 画笔
+                            </label> &nbsp;
+                            <label>
+                                <input type="radio" value="1" name="biansebi" /> 橡皮檫
+                            </label>
+                        </div>
+                        <div class="item">
+                            <div>画笔大小  <span id="biansebiSizeVal">50</span></div>
+                            <div><input id="biansebiSize" type="range" min="5" max="100" value="50"></div>
+                        </div>
+                        <div id="otherColorContent" class="item1 pr">
+                            <div>当前颜色</div>
+                            <span id="currentColor" class="current-color color" value="000000"></span>
+                            <span id="btnChooseColor" class="btn-choose-color">选择其他颜色</span>
+                            <div id="colorWrap" class="color-wrap">
+                                <div class="color-title">
+                                    <span class="current"></span>
+                                    <input class="current-text" type="text" />
+                                </div>
+                                <div id="colorContent" class="content">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="biansebi" class="btn">
+                            <span cmd="ok">确定</span><span cmd="cancel">取消</span>
+                        </div>
+                        <div class="item3">
+                            <div>头发变色(染发)</div>
+                            <span class="color" value="9C9961"></span><span class="color" value="8201CC"></span><span class="color" value="7B2834"></span><span class="color" value="3B7C9E"></span><span class="color" value="8F4F29"></span><span class="color" value="EDB725"></span><span class="color" value="D5529D"></span>
+                        </div>
+                        <div class="item">
+                            <div>皮肤变色(美白)</div>
+                            <span class="color" value="A17F71"></span><span class="color" value="C0AEA1"></span><span class="color" value="B5A9B7"></span><span class="color" value="766452"></span>
+                        </div>
+                        <div class="item">
+                            <div>唇彩颜色</div>
+                            <span class="color" value="C75454"></span><span class="color" value="CF84B0"></span><span class="color" value="B582C6"></span><span class="color" value="6A4895"></span><span class="color" value="CF8487"></span><span class="color" value="C754B3"></span><span class="color" value="801F24"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 保存分享 -->
+            <div id="list2" class="list2 hide">
+                <span id="save" class="save">保存到本地</span> 
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+ 	<div id="footer" class="footer">
+        <span class="disable" cmd="revoke" title="撤销">撤销</span>
+        <span class="disable" cmd="redo" title="重做">重做</span>
+        <span class="disable" cmd="original" title="原图">原图</span>
+        <span class="disable" cmd="contrast" title="对比">对比</span>
+ 	</div>
+    
+    <script data-main="js/main.min.js" src="js/lib/require.min.js"></script> 
+    <!--<script data-main="source/bulid/main.js" src="js/lib/require.min.js"></script>-->
+</body>
+</html>

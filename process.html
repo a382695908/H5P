@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>process</title>
+    <link rel="stylesheet" type="text/css" href="css/index.min.css">
+</head>
+<body class="no-select">
+<div id="processContent" class="full-screen pa">
+    <!-- 画布 -->
+    <canvas id="prev" class="process"></canvas>
+	<canvas id="next" class="process"></canvas>
+    <!-- 打开图片方式 -->
+	<div id="file" class="tip-open">打开一张图片</div>
+	<div id="medio" class="tip-open cd" >正片准备相机...</div>
+    <!-- 摄像机按钮 -->
+    <div id="medioBtn" class="medio-btn">
+        <span id="medioBtn1">拍照</span>
+        <span id="medioBtn2">取消</span>
+        <span id="medioBtn3" class="hide">开始美化</span>
+        <span id="medioBtn4" class="hide">重拍</span>
+    </div>
+	<!-- 笔刷 -->
+    <div id="pen" class="process-pen"></div>
+    <canvas id="sucai" class="process-sucai"></canvas>
+    <!-- 裁剪对象 -->
+    <div id="clip" class="clip">
+        <div class="clip-content"></div>
+        <div class="clip-resize clip-nw"></div>
+        <div class="clip-resize clip-ne"></div>
+        <div class="clip-resize clip-sw"></div>
+        <div class="clip-resize clip-se"></div>
+        <div class="clip-resize clip-w"></div>
+        <div class="clip-resize clip-e"></div>
+        <div class="clip-resize clip-n"></div>
+        <div class="clip-resize clip-s"></div>
+    </div>
+</div>
+
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/process.min.js"></script>
+    <!--<script src="source/bulid/process.js"></script>-->
+</body>
+</html>

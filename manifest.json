@@ -1,0 +1,29 @@
+{
+	"name": "H5P",
+	"version": "0.0.1",
+	"manifest_version": 2,
+	"description": "a powerful HTML5 image processing onling",
+	"browser_action": {
+		"default_icon": "icon/icon.png",
+		"default_title": "H5P"
+		//"default_popup": "popup.html" //注册点击弹出气泡页面
+	},
+	"icons": {
+		"16": "icon/icon.png",
+		"38": "icon/icon.png",
+		"48": "icon/icon.png",
+		"128": "icon/icon.png"
+	},
+	"background": {
+		// "scripts": ["source/bulid/background.js"]
+		"scripts": ["background.js"]
+	},
+	"permissions":[
+		"background",
+		"contextMenus",
+		"notifications",//右下脚通知
+		"http://*/*",
+    	"https://*/*"
+    	// "storage"
+	]
+}
