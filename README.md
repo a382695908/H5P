@@ -9,7 +9,8 @@ HTML5 图片处理
 
 你可以自己打包应用，装上最新版本nodejs 跟 grunt,然后输入
 
-命令：cd /source
+命令：
+      cd /source
 
       node install
       
