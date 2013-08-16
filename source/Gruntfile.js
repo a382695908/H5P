@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 					  'src/main/rotate.js',
 					  'src/main/changeSize.js',
 					  'src/main/cut.js',
-					  'src/main/gb.js',
+					  'src/main/bg.js',
 					  'src/main/pencil.js'
 				],
 				dest: 'bulid/main.js'
